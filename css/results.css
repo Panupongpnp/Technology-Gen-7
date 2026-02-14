@@ -1,0 +1,197 @@
+/* ===== RESULTS PAGE (PAGE 3) ===== */
+
+.results-list {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-lg);
+    background: var(--gradient-card);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.result-item:hover {
+    border-color: rgba(0, 168, 255, 0.3);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Alternating layout */
+.result-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.result-image {
+    flex: 0 0 220px;
+    align-self: flex-start;
+    width: 220px;
+    height: 220px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid var(--color-glass-border);
+    position: relative;
+}
+
+.result-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.result-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), transparent);
+    pointer-events: none;
+}
+
+.result-info {
+    flex: 1;
+}
+
+.result-name {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+    position: relative;
+    padding-bottom: var(--space-sm);
+}
+
+.result-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--gradient-gold);
+    box-shadow: var(--glow-gold);
+}
+
+.result-item.reverse .result-name::after {
+    left: auto;
+    right: 0;
+}
+
+.result-item.reverse .result-info {
+    text-align: right;
+}
+
+.admission-entry {
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admission-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.admission-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 2px;
+}
+
+.admission-value {
+    font-size: var(--fs-body);
+    color: var(--color-gray);
+    font-weight: 400;
+}
+
+.admission-value.university {
+    color: var(--color-blue);
+    font-weight: 500;
+}
+
+/* Number badge */
+.result-number {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.9);
+    color: var(--color-black);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 800;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .result-item,
+    .result-item.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .result-item.reverse .result-info {
+        text-align: center;
+    }
+
+    .result-name::after,
+    .result-item.reverse .result-name::after {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .result-image {
+        flex: none;
+        width: 180px;
+        height: 180px;
+    }
+}
+
+
+/* ซ่อนรายการที่ 4 เป็นต้นไป ( index 3 ขึ้นไป) */
+.admission-container .admission-entry:nth-child(n+4) {
+    display: none;
+}
+
+/* เมื่อมี Class 'expanded' ให้แสดงทั้งหมด */
+.admission-container.expanded .admission-entry {
+    display: block !important;
+}
+
+/* ตกแต่งปุ่มให้ดูสวยงาม */
+.show-more-btn {
+    display: block;
+    margin: 15px auto 0;
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+    background: var(--gradient-gold);
+    color: var(--color-black);
+    box-shadow: var(--glow-gold);
+}

@@ -1,0 +1,120 @@
+/* ===== HOME PAGE ===== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: var(--space-lg);
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-md);
+    animation: fadeInDown 0.8s ease forwards;
+    opacity: 0;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-hero);
+    font-weight: 900;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--color-blue-light), var(--color-blue), var(--color-white));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease 0.3s forwards, textGlow 3s ease-in-out infinite 1.3s;
+    opacity: 0;
+    position: relative;
+}
+
+.hero-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient-gold);
+    animation: lineExpand 1s ease 1.5s forwards;
+    box-shadow: var(--glow-gold);
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--fs-h3);
+    font-weight: 300;
+    color: var(--color-gray);
+    letter-spacing: 4px;
+    margin-top: var(--space-lg);
+    animation: fadeInUp 1s ease 0.6s forwards;
+    opacity: 0;
+}
+
+.hero-subtitle .highlight-text {
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+.hero-badge {
+    display: inline-block;
+    margin-top: var(--space-xl);
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-display);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    animation: fadeInUp 1s ease 0.9s forwards, glowPulseGold 3s ease-in-out infinite 1.9s;
+    opacity: 0;
+    transition: all var(--transition-base);
+}
+
+.hero-badge:hover {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: var(--glow-gold);
+}
+
+/* Decorative elements */
+.hero-grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0, 168, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 168, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
